@@ -1,4 +1,4 @@
-from data.vnf_dataset import load_vnf_data
+from vnf.vnf_dataset_loader import load_vnf_data
 from utils.constraints_generator import generate_constraints
 
 from agents.dqn_agent import DQNAgent
