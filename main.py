@@ -1,8 +1,16 @@
 from data.vnf_dataset import load_vnf_data
 from utils.constraints_generator import generate_constraints
 
+from agents.dqn_agent import DQNAgent
+from agents.a2c_agent import A2CAgent
+from agents.ppo_agent import PPOAgent
+from agents.random_agent import RandomAgent
 from env.vnf_environment import VNFEnvironment
+from agents.evolutionary_agent import EvolutionaryAgent
+from agents.random_search_agent import RandomSearchAgent
 from agents.policy_gradient_agent import PolicyGradientAgent
+from agents.best_compute_greedy_agent import BestComputeAgent
+from agents.best_accuracy_greedy_agent import BestAccuracyAgent
 from rewarders.composite_qos_rewarder import CompositeQoSRewarder
 
 from utils.logger_config import setup_logger
@@ -27,7 +35,15 @@ def main():
     env = VNFEnvironment(vnf_list, vnf_to_models, vnf_priority, constraints, rewarder)
 
     print("Intializing the Agent...")
-    agent = PolicyGradientAgent(env)
+    # agent = PolicyGradientAgent(env)
+    # agent = DQNAgent(env)
+    # agent = A2CAgent(env)
+    # agent = PPOAgent(env)
+    # agent = RandomAgent(env)
+    # agent = RandomSearchAgent(env)
+    # agent = BestAccuracyAgent(env)
+    # agent = BestComputeAgent(env)
+    agent = EvolutionaryAgent(env)
 
     print("Training the Agent...")
     agent.train()

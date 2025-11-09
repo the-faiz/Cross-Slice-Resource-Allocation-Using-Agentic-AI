@@ -44,7 +44,6 @@ class VNFEnvironment:
                 float(model['latency_ms'])/self.latency_sla
             ])
         model_feats = np.array(model_feats).flatten()
-
         return np.concatenate([v, [cpu_rem, mem_rem, gpu_rem, lat_rem], model_feats])
 
     def compute_reward(self):
@@ -70,7 +69,7 @@ class VNFEnvironment:
         done = (self.idx >= self.num_vnfs)
         if done:
             reward = self.compute_reward()
-            obs = np.zeros(self.num_vnfs + 4, dtype=float)
+            obs = np.zeros(self.num_vnfs + 4 + self.num_models*5, dtype=float)
         else:
             reward = 0.0
             obs = self._get_obs()

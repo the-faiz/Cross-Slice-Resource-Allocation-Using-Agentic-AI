@@ -118,7 +118,6 @@ class PolicyGradientAgent(BaseAgent):
             actions.append(action)
         
         print("Example Selection Policy Gradient Agent : ")
-        for a in actions:
-            print(a)
+        print(actions)
         for s in selection:
             print(s)
